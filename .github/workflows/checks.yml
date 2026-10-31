@@ -1,0 +1,66 @@
+name: Offline checks
+on:
+  push:
+    paths:
+      - 'custom_components/**'
+      - 'tests/**'
+      - 'tools/**'
+      - 'requirements-test*.txt'
+      - '.github/workflows/checks.yml'
+      - '.github/CODEOWNERS'
+      - 'hacs.json'
+      - 'repository.json'
+      - 'LICENSE'
+  pull_request:
+    paths:
+      - 'custom_components/**'
+      - 'tests/**'
+      - 'tools/**'
+      - 'requirements-test*.txt'
+      - '.github/workflows/checks.yml'
+      - '.github/CODEOWNERS'
+      - 'hacs.json'
+      - 'repository.json'
+      - 'LICENSE'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - profile: stable
+            requirements: requirements-test.txt
+          - profile: minimum
+            requirements: requirements-test-minimum.txt
+    name: HA ${{ matrix.profile }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.14'
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: python -m pip install -r ${{ matrix.requirements }}
+      - run: python tools/validate_repository.py
+      - name: Complete stable test suite
+        if: matrix.profile == 'stable'
+        run: python -I tools/run_tests.py
+      - name: Minimum stable HA compatibility and dependency scope
+        if: matrix.profile == 'minimum'
+        run: |
+          python -I - <<'PYTEST'
+          import sys, unittest
+          from pathlib import Path
+          sys.path.insert(0, str(Path('tests').resolve()))
+          names = ['test_ha_final', 'test_full_ha_loader',
+                   'test_clean_component_install', 'test_stage_install',
+                   'test_ha_media_stream', 'test_dependency_scope']
+          result = unittest.TextTestRunner(verbosity=2).run(
+              unittest.defaultTestLoader.loadTestsFromNames(names))
+          raise SystemExit(not result.wasSuccessful())
+          PYTEST

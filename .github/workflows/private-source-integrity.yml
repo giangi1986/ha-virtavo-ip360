@@ -1,0 +1,32 @@
+name: Private source integrity
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: github.repository == 'giangi1986/ha-virtavo-ip360' && github.event.repository.private == true
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.14'
+      - name: Verify every tracked source file against the prepared manifest
+        run: |
+          python - <<'PYVERIFY'
+          import hashlib, json, subprocess
+          from pathlib import Path
+          manifest = 'SOURCE_TREE_SHA256.json'
+          expected = json.loads(Path(manifest).read_text())
+          tracked = set(subprocess.check_output(['git', 'ls-files', '-z']).decode().split('\0')) - {'', manifest}
+          assert tracked == set(expected), 'Tracked source tree does not match prepared inventory'
+          mismatches = [name for name, digest in expected.items() if hashlib.sha256(Path(name).read_bytes()).hexdigest() != digest]
+          assert not mismatches, 'Source file digest mismatch: ' + ', '.join(mismatches)
+          runtime = [name for name in tracked if name.startswith('custom_components/virtavo/')]
+          assert len(runtime) == 35, 'Unexpected runtime file inventory'
+          print(json.dumps({'tracked_files_verified': len(tracked), 'runtime_files_verified': len(runtime), 'all_digests_match': True}))
+          PYVERIFY
+      - run: python tools/validate_repository.py --publication
