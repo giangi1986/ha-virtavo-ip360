@@ -1,0 +1,39 @@
+{
+  "checkpoint": 53,
+  "repository": "giangi1986/ha-virtavo-ip360",
+  "visibility": "private",
+  "tested_remote_commit": "1eeb4e8b21aa5d4241e4c40aa96e8845cd15d1d8",
+  "prepared_source_checkpoint": 52,
+  "prepared_source_commit": "9908da4bef81954bd997ac8e71161798365bead6",
+  "clean_runner": "ubuntu-24.04",
+  "python": "3.14",
+  "compatibility_run": "https://github.com/giangi1986/ha-virtavo-ip360/actions/runs/41234555862",
+  "stable": {
+    "home_assistant": "2026.10.4",
+    "tests_passed": 188,
+    "failures": 0,
+    "job": "https://github.com/giangi1986/ha-virtavo-ip360/actions/runs/41234555862/job/124635486961"
+  },
+  "minimum": {
+    "home_assistant": "2026.10.0",
+    "tests_passed": 27,
+    "failures": 0,
+    "job": "https://github.com/giangi1986/ha-virtavo-ip360/actions/runs/41234555862/job/124635487105"
+  },
+  "source_integrity": {
+    "run": "https://github.com/giangi1986/ha-virtavo-ip360/actions/runs/41249195600",
+    "job": "https://github.com/giangi1986/ha-virtavo-ip360/actions/runs/41249195600/job/124678956619",
+    "tracked_files_verified": 108,
+    "runtime_files_verified": 35,
+    "all_digests_match": true,
+    "inventory_excludes_itself": true
+  },
+  "actual_HACS_download_tested": false,
+  "HACS_private_validation": "skipped as designed, not a successful remote installation",
+  "camera_or_cloud_contacted": false,
+  "runtime_changed": false,
+  "host_dependency_findings_fixed": false,
+  "public_visibility_authorized": false,
+  "public_release_created": false,
+  "scope_note": "CI verifies checkout, declared test dependencies, offline HA integration and source consistency. Final checkpoint53 documentation is added after this tested code revision; test/runtime/workflow files remain unchanged."
+}
