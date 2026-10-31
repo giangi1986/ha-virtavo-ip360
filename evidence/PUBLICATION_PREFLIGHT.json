@@ -1,0 +1,21 @@
+{
+  "checkpoint": 54,
+  "public_visibility_authorized_only_for_HACS_test": true,
+  "release_authorized": false,
+  "announcement_authorized": false,
+  "remote_history_commits_checked": 32,
+  "historical_file_visits": 2139,
+  "sensitive_findings": [],
+  "github_system_noreply_count": 32,
+  "github_user_noreply_count": 32,
+  "unexpected_commit_email_count": 0,
+  "nonblocking_historical_partial_upload_import_gaps": 4,
+  "MIT_and_CODEOWNERS_verified": true,
+  "proprietary_binary_PCAP_or_media_distributed": false,
+  "private_preflight_run": "https://github.com/giangi1986/ha-virtavo-ip360/actions/runs/41250312999",
+  "private_preflight_job": "https://github.com/giangi1986/ha-virtavo-ip360/actions/runs/41250312999/job/124682269561",
+  "backup53_ZIP_CRC_and_110_hashes_pass": true,
+  "backup53_fresh_bundle_clone_and_110_source_hashes_pass": true,
+  "runtime_changed": false,
+  "scope": "All reachable remote source/assets/commit metadata checked using selected patterns and redacted results; manual provenance review. Not a universal secret guarantee, legal opinion, or a clean host vulnerability audit."
+}
