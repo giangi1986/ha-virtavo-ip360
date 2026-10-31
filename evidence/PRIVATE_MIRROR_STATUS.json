@@ -1,0 +1,38 @@
+{
+  "checkpoint": 52,
+  "reference_source_commit": "6f4abac55ae02647279ea443357c6f411c62a033",
+  "reference_source_checkpoint": 50,
+  "repository": "giangi1986/ha-virtavo-ip360",
+  "visibility_verified": "private",
+  "remote_head_after_runtime_upload": "30b14f32856c31c368876e70fb8cd08ddf5a10e3",
+  "remote_commits_observed": 12,
+  "root_metadata_MIT_uploaded": true,
+  "runtime_groups_uploaded": {
+    "component_base": 7,
+    "engine": 20,
+    "pure_python_DES": 7,
+    "translations": 1
+  },
+  "runtime_bytes_remotely_compared": false,
+  "remaining": [
+    "final_workflow_and_metadata_reconciliation",
+    "clean_runner_stable_and_minimum_checks",
+    "whole_remote_tree_verification"
+  ],
+  "public_visibility_authorized": false,
+  "public_releases_authorized": false,
+  "actual_HACS_download_tested": false,
+  "existing_remote_history_preserved": true,
+  "force_push_used": false,
+  "runtime_changed": false,
+  "source_groups_submitted": [
+    "root_metadata_MIT",
+    "runtime35",
+    "CODEOWNERS",
+    "documentation",
+    "evidence",
+    "tests25",
+    "tools9"
+  ],
+  "local_workflow_policy_tests_passed": 3
+}
