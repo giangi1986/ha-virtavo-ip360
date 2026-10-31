@@ -1,0 +1,73 @@
+{
+  "title": "Virtavo / IP360 Home",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Virtavo / IP360 Home",
+        "description": "Sign in with your account email and password. Cameras are discovered before configuration is saved.",
+        "data": {
+          "username": "Email",
+          "password": "Password",
+          "region": "Server region",
+          "country": "Account country (two-letter ISO code)"
+        }
+      },
+      "device": {
+        "title": "Select a camera",
+        "data": {
+          "device_id": "Camera"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Update credentials",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_input": "Invalid input",
+      "invalid_auth": "Invalid credentials",
+      "cannot_connect": "Cannot connect",
+      "protocol_error": "Unsupported service response",
+      "invalid_device": "Select a discovered camera",
+      "invalid_mode": "Invalid streaming mode",
+      "invalid_region": "Invalid region",
+      "invalid_audio": "Invalid audio value",
+      "audio_unavailable": "Audio is not available yet",
+      "invalid_country": "Enter a two-letter ISO country code.",
+      "unsupported_country": "China accounts require a carrier path that is not supported yet."
+    },
+    "abort": {
+      "protocol_incomplete": "Autonomous runtime is not enabled yet; no credentials were saved.",
+      "no_devices": "No camera was discovered for this account.",
+      "already_configured": "This camera is already configured.",
+      "reauth_entry_missing": "The entry to reauthenticate is unavailable.",
+      "reauth_successful": "Credentials updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Virtavo options",
+        "description": "Continuous streaming may increase battery use. Changing region reconnects the account.",
+        "data": {
+          "stream_mode": "Streaming mode",
+          "audio_enabled": "Audio",
+          "region": "Server region"
+        }
+      }
+    },
+    "error": {
+      "invalid_input": "Invalid input",
+      "invalid_auth": "Invalid credentials",
+      "cannot_connect": "Cannot connect",
+      "protocol_error": "Unsupported service response",
+      "invalid_device": "Select a discovered camera",
+      "invalid_mode": "Invalid streaming mode",
+      "invalid_region": "Invalid region",
+      "invalid_audio": "Invalid audio value",
+      "audio_unavailable": "Audio is not available yet"
+    }
+  }
+}

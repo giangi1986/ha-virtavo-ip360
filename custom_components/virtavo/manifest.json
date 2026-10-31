@@ -1,0 +1,18 @@
+{
+  "domain": "virtavo",
+  "name": "Virtavo Camera",
+  "version": "0.1.0-beta.2",
+  "documentation": "https://github.com/giangi1986/ha-virtavo-ip360",
+  "issue_tracker": "https://github.com/giangi1986/ha-virtavo-ip360/issues",
+  "codeowners": [
+    "@giangi1986"
+  ],
+  "config_flow": true,
+  "dependencies": [
+    "stream",
+    "ffmpeg"
+  ],
+  "requirements": [],
+  "iot_class": "cloud_push",
+  "integration_type": "hub"
+}
