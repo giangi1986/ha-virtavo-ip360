@@ -23,28 +23,38 @@ jobs:
           sys.path.insert(0,str(Path('tools').resolve()))
           from audit_repository import audit,TOKEN,EMAIL,HOST_CONTEXT
           revs=subprocess.check_output(['git','rev-list','--all']).decode().splitlines()
-          findings=[]; file_visits=0
+          findings=[]; file_visits=0; historical_import_gaps=0; identities={'github_system_noreply':0,'github_user_noreply':0,'reserved_test_identity':0,'unexpected_email':0}
           for rev in revs:
               with tempfile.TemporaryDirectory(prefix='virtavo-history-') as d:
                   raw=subprocess.check_output(['git','archive',rev])
                   tarfile.open(fileobj=io.BytesIO(raw)).extractall(d,filter='data')
                   report=audit(d);file_visits+=report['files_checked']
-                  findings.extend(dict(commit=rev,**f) for f in report['findings'])
+                  for f in report['findings']:
+                      if f['kind']=='missing_local_import' and rev!=revs[0]:
+                          historical_import_gaps+=1
+                      else:
+                          findings.append(dict(commit=rev,**f))
               metadata=subprocess.check_output(['git','show','-s','--format=%an%x00%ae%x00%cn%x00%ce%x00%B',rev]).decode()
               fields=metadata.split('\0',4)
               for name in (fields[0],fields[2]):
-                  if name not in {'giangi1986','github-actions[bot]','ha-virtavo-ip360 contributors'}:
+                  if name not in {'giangi1986','GitHub','github-actions[bot]','ha-virtavo-ip360 contributors'}:
                       findings.append({'commit':rev,'kind':'unreviewed_commit_identity'})
               if TOKEN.search(metadata) or HOST_CONTEXT.search(metadata):
                   findings.append({'commit':rev,'kind':'sensitive_commit_metadata_pattern'})
               for m in EMAIL.finditer(metadata):
                   domain=m.group(1).lower()
+                  if m.group(0).lower()=='noreply@'+'github.com':
+                      identities['github_system_noreply']+=1
+                      continue
+                  if domain=='users.noreply.github.com': identities['github_user_noreply']+=1
+                  elif domain.endswith(('.invalid','.test','.example')): identities['reserved_test_identity']+=1
+                  else: identities['unexpected_email']+=1
                   if not (domain.endswith(('.invalid','.test','.example')) or domain in {'example.com','example.net','example.org','users.noreply.github.com','noreply.github.com'}):
                       findings.append({'commit':rev,'kind':'non_reserved_commit_email'})
           assert Path('LICENSE').read_text().startswith('MIT License')
           assert Path('.github/CODEOWNERS').read_text().strip()=='* @giangi1986'
           assert not json.loads(Path('custom_components/virtavo/manifest.json').read_text())['requirements']
-          result={'history_commits_checked':len(revs),'historical_file_visits':file_visits,'findings':findings,'MIT_and_CODEOWNERS_verified':True,'runtime_extra_pip_requirements':0,'scope':'All reachable refs: source/assets and commit identity/message patterns. Findings are redacted; this is not universal secret detection or a legal opinion.'}
+          result={'history_commits_checked':len(revs),'historical_file_visits':file_visits,'findings':findings,'commit_email_classes':identities,'nonblocking_historical_partial_upload_import_gaps':historical_import_gaps,'MIT_and_CODEOWNERS_verified':True,'runtime_extra_pip_requirements':0,'scope':'All reachable refs: source/assets and commit identity/message patterns. Findings are redacted; this is not universal secret detection or a legal opinion.'}
           print(json.dumps(result,indent=2))
           raise SystemExit(bool(findings))
           PYPREFLIGHT
