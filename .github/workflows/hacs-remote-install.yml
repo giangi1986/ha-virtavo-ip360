@@ -1,0 +1,99 @@
+name: Real HACS remote installation
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  install:
+    if: github.repository == 'giangi1986/ha-virtavo-ip360' && github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.14'
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - run: python -m pip install -r requirements-test.txt 'aiogithubapi>=22.10.1'
+      - uses: actions/checkout@v7
+        with:
+          repository: hacs/integration
+          ref: c0dfd8b44297c3673c21973e2539375a53687a9c
+          path: .hacs-official
+          persist-credentials: false
+      - name: Register and install with official HACS and real GitHub network
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python -I - <<'PYHACS'
+          import asyncio, hashlib, json, os, subprocess, sys, tempfile
+          from pathlib import Path
+          from types import ModuleType
+          import aiohttp
+          root = Path.cwd()
+          source = root / '.hacs-official'
+          pinned = 'c0dfd8b44297c3673c21973e2539375a53687a9c'
+          async def main():
+              assert subprocess.check_output(['git', '-C', str(source), 'rev-parse', 'HEAD']).decode().strip() == pinned
+              assert not subprocess.check_output(['git', '-C', str(source), 'status', '--porcelain', '--untracked-files=no'])
+              package = source / 'custom_components/hacs'
+              for name, path in [('custom_components', package.parent), ('custom_components.hacs', package)]:
+                  module = ModuleType(name)
+                  module.__path__ = [str(path)]
+                  sys.modules[name] = module
+              from custom_components.hacs.base import HacsBase
+              from custom_components.hacs.enums import HacsCategory
+              from homeassistant.core import HomeAssistant
+              from homeassistant.loader import async_get_custom_components, async_setup
+              from aiogithubapi import GitHub, GitHubAPI
+              with tempfile.TemporaryDirectory(prefix='virtavo-real-hacs-') as directory:
+                  config = Path(directory) / 'config'
+                  config.mkdir()
+                  hass = HomeAssistant(str(config))
+                  hass.config.skip_pip = True
+                  async_setup(hass)
+                  async with aiohttp.ClientSession() as session:
+                      try:
+                          hacs = HacsBase()
+                          hacs.hass = hass
+                          hacs.core.config_path = str(config)
+                          hacs.session = session
+                          hacs.github = GitHub(token=os.environ['GH_TOKEN'], session=session)
+                          hacs.githubapi = GitHubAPI(token=os.environ['GH_TOKEN'], session=session)
+                          await async_get_custom_components(hass)
+                          result = await hacs.async_register_repository('giangi1986/ha-virtavo-ip360', HacsCategory.INTEGRATION, ref='main')
+                          assert result is None, result
+                          repo = hacs.repositories.get_by_full_name('giangi1986/ha-virtavo-ip360')
+                          assert repo is not None and not repo.validate.errors
+                          assert not repo.repository_object.attributes.get('private', True)
+                          assert not repo.repository_manifest.zip_release
+                          await repo.async_install()
+                          assert repo.data.installed
+                          installed = config / 'custom_components/virtavo'
+                          runtime = root / 'custom_components/virtavo'
+                          expected = {p.relative_to(runtime).as_posix(): p.read_bytes() for p in runtime.rglob('*') if p.is_file() and '__pycache__' not in p.parts}
+                          actual = {p.relative_to(installed).as_posix(): p.read_bytes() for p in installed.rglob('*') if p.is_file() and '__pycache__' not in p.parts}
+                          assert len(expected) == 35 and actual == expected
+                          assert not (config / 'README.md').exists()
+                          sys.path.insert(0, str(root / 'tests'))
+                          from test_full_ha_loader import RUNNER
+                          runner = Path(directory) / 'loader.py'
+                          runner.write_text(RUNNER)
+                          process = await asyncio.create_subprocess_exec(sys.executable, '-I', str(runner), str(config), cwd=config, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
+                          out, err = await asyncio.wait_for(process.communicate(), 50)
+                          assert process.returncode == 0, err.decode()[-3500:]
+                          loader = json.loads(out.decode().strip().splitlines()[-1])
+                          loader.pop('actual_HACS_download', None)
+                          report = {'repository': 'giangi1986/ha-virtavo-ip360', 'HACS_version': '2.0.5', 'HACS_commit': pinned, 'official_HACS_methods_unmodified': True, 'real_GitHub_metadata_API': True, 'actual_HACS_download': True, 'real_HACS_registration_and_install': True, 'installed_commit': repo.data.installed_commit, 'selected_ref': repo.ref, 'release_required': False, 'runtime_files_installed': len(actual), 'all_runtime_bytes_match': True, 'actual_HA_loader_after_HACS_install': loader, 'HACS_UI_or_OAuth_startup_tested': False, 'camera_or_cloud_contacted': False, 'user_credentials_used': False, 'GitHub_authentication': 'ephemeral read-only Actions token', 'production_HA_modified': False, 'runtime_modified': False, 'runtime_SHA256': {n: hashlib.sha256(v).hexdigest() for n, v in sorted(actual.items())}}
+                          Path('real-hacs-install.json').write_text(json.dumps(report, indent=2) + '\n')
+                          print(json.dumps(report, indent=2))
+                      finally:
+                          await hass.async_stop(force=True)
+          asyncio.run(main())
+          PYHACS
+      - uses: actions/upload-artifact@v7
+        with:
+          name: real-hacs-install
+          path: real-hacs-install.json
+          retention-days: 7
