@@ -19,6 +19,18 @@ class RepositoryToolsTests(unittest.TestCase):
   self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
   self.root=Path(self.tmp.name)/'repo'
   shutil.copytree(ROOT,self.root,ignore=shutil.ignore_patterns('.git','__pycache__','.venv'))
+ def test_original_icon_is_bounded_and_rejects_malformed_or_hidden_payload(self):
+  path=self.root/audit.BRAND_ICON
+  original=path.read_bytes()
+  self.assertTrue(audit.valid_brand_png(original))
+  self.assertFalse(audit.valid_brand_png(original+b'hidden payload'))
+  self.assertFalse(audit.valid_brand_png(original[:-1]))
+  self.assertFalse(audit.valid_brand_png(bytes(131073)))
+  path.write_bytes(original+b'hidden payload')
+  self.assertIn('invalid_brand_icon',{x['kind'] for x in audit.audit(self.root)['findings']})
+ def test_unapproved_binary_png_is_rejected(self):
+  (self.root/'unapproved.png').write_bytes((self.root/audit.BRAND_ICON).read_bytes())
+  self.assertIn('non_text_asset',{x['kind'] for x in audit.audit(self.root)['findings']})
  def test_known_secret_and_private_data_report_is_redacted(self):
   token='ghp_'+'A'*40
   email='fixture'+'@'+'private'+'.com'
