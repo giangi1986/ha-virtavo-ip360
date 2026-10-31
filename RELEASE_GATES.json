@@ -25,16 +25,18 @@
     {
       "id": "clean_hacs_install",
       "status": "blocked",
-      "reason": "Official standard HACS excludes private repositories. Public availability is not authorized. Manual archive installation is tested separately and is not this gate."
+      "reason": "Real public GitHub/HACS installation test now authorized after final preflight; not yet performed."
     },
     {
       "id": "publication_review",
       "status": "blocked",
-      "reason": "Public visibility and public releases explicitly not authorized. Complete private source mirror and clean runner CI are verified; final publication review remains separate."
+      "reason": "Scoped public HACS test authorized; no release or community announcement authorized. Final post-install review pending; upstream host findings remain documented."
     }
   ],
   "progress_basis": "verified gates divided by7; not elapsed time or effort",
   "verified_gates": 5,
   "total_gates": 7,
-  "progress_percent": 71
+  "progress_percent": 71,
+  "public_hacs_test_authorized": true,
+  "release_or_announcement_authorized": false
 }
