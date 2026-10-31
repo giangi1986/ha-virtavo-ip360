@@ -74,7 +74,7 @@ jobs:
                           runtime = root / 'custom_components/virtavo'
                           expected = {p.relative_to(runtime).as_posix(): p.read_bytes() for p in runtime.rglob('*') if p.is_file() and '__pycache__' not in p.parts}
                           actual = {p.relative_to(installed).as_posix(): p.read_bytes() for p in installed.rglob('*') if p.is_file() and '__pycache__' not in p.parts}
-                          assert len(expected) == 35 and actual == expected
+                          assert len(expected) == 37 and actual == expected
                           assert not (config / 'README.md').exists()
                           sys.path.insert(0, str(root / 'tests'))
                           from test_full_ha_loader import RUNNER
