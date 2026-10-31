@@ -1,1 +1,73 @@
-{}
+{
+  "title": "Virtavo / IP360 Home",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Virtavo / IP360 Home",
+        "description": "Accedi con email e password dell’account. Le telecamere vengono individuate prima di salvare la configurazione.",
+        "data": {
+          "username": "Email",
+          "password": "Password",
+          "region": "Regione server",
+          "country": "Paese account (codice ISO a due lettere)"
+        }
+      },
+      "device": {
+        "title": "Seleziona telecamera",
+        "data": {
+          "device_id": "Telecamera"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Aggiorna credenziali",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_input": "Dati non validi",
+      "invalid_auth": "Credenziali non valide",
+      "cannot_connect": "Servizio non raggiungibile",
+      "protocol_error": "Risposta del servizio non supportata",
+      "invalid_device": "Seleziona una telecamera individuata",
+      "invalid_mode": "Modalità non valida",
+      "invalid_region": "Regione non valida",
+      "invalid_audio": "Valore audio non valido",
+      "audio_unavailable": "Audio non ancora disponibile",
+      "invalid_country": "Inserisci un codice paese ISO di due lettere.",
+      "unsupported_country": "Gli account Cina richiedono un percorso operatore non ancora supportato."
+    },
+    "abort": {
+      "protocol_incomplete": "Runtime autonomo non ancora abilitato: nessuna credenziale salvata.",
+      "no_devices": "Nessuna telecamera associata a questo account.",
+      "already_configured": "Telecamera già configurata.",
+      "reauth_entry_missing": "Configurazione da autenticare non disponibile.",
+      "reauth_successful": "Credenziali aggiornate."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opzioni Virtavo",
+        "description": "Lo streaming continuo può aumentare il consumo della batteria. Cambiando regione l’account viene riconnesso.",
+        "data": {
+          "stream_mode": "Modalità streaming",
+          "audio_enabled": "Audio",
+          "region": "Regione server"
+        }
+      }
+    },
+    "error": {
+      "invalid_input": "Dati non validi",
+      "invalid_auth": "Credenziali non valide",
+      "cannot_connect": "Servizio non raggiungibile",
+      "protocol_error": "Risposta del servizio non supportata",
+      "invalid_device": "Seleziona una telecamera individuata",
+      "invalid_mode": "Modalità non valida",
+      "invalid_region": "Regione non valida",
+      "invalid_audio": "Valore audio non valido",
+      "audio_unavailable": "Audio non ancora disponibile"
+    }
+  }
+}
