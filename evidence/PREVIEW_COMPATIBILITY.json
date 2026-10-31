@@ -1,0 +1,108 @@
+{
+  "checked_on": "2026-10-31",
+  "host_home_assistant": "2026.11.0b1",
+  "host_release_channel": "prerelease",
+  "pillow": "13.0.0",
+  "python": "3.14.8",
+  "fresh_isolated_venv": true,
+  "declared_requirements": "requirements-test-preview.txt",
+  "compatible_distributions": 108,
+  "pip_check_exit": 0,
+  "targeted_HA_tests": 26,
+  "test_failures": 0,
+  "test_skips": 0,
+  "test_modules": [
+    "test_ha_final",
+    "test_full_ha_loader",
+    "test_clean_component_install",
+    "test_stage_install",
+    "test_ha_media_stream"
+  ],
+  "why_media_checks_repeated": "New upstream HA and Pillow target, a publication compatibility requirement; synthetic media only",
+  "camera_or_cloud_contacted": false,
+  "actual_HACS_download": false,
+  "audit_tool": "pip-audit2.10.1",
+  "audit_exit_code": 0,
+  "known_vulnerability_records": 0,
+  "audit_report": "evidence/PREVIEW_DEPENDENCY_AUDIT.json",
+  "audit_sha256": "3d8f52714bd91f0145e8e509d002402e942b1624b651eb39e0184c7d37951e1b",
+  "media_and_lifecycle_results": [
+    {
+      "HA_decoder_tested": false,
+      "account_contexts_closed": 1,
+      "actual_HACS_download": false,
+      "cloud_or_camera_contacted": false,
+      "default_on_demand": true,
+      "full_HA_config_entry_setup_unload": true,
+      "real_HA_camera_entity_registered": true,
+      "real_loader_and_platform_forward": true
+    },
+    {
+      "account_connections_closed": 3,
+      "actual_HACS_download_tested": false,
+      "audio_default_off_and_opt_in": true,
+      "camera_or_cloud_contacted": false,
+      "default_on_demand": true,
+      "isolated_runtime_copy": true,
+      "real_HA_flow_service_factory_camera_endpoint": true,
+      "source_uses_only_staged_component": true,
+      "video_decoded": false
+    },
+    {
+      "actual_HACS_download": false,
+      "audio_enabled": false,
+      "browser_playback": false,
+      "cloud_or_camera_contacted": false,
+      "codecs": [
+        "hevc"
+      ],
+      "decoded_audio_frames": 0,
+      "decoded_video_frames": 18,
+      "first_part_seconds": 1.21,
+      "real_HA_HLS_worker": true,
+      "stalled_source": false,
+      "synthetic_media": true,
+      "unload_closed_worker": true,
+      "unload_seconds": 0.005
+    },
+    {
+      "actual_HACS_download": false,
+      "audio_enabled": true,
+      "browser_playback": false,
+      "cloud_or_camera_contacted": false,
+      "codecs": [
+        "hevc",
+        "aac"
+      ],
+      "decoded_audio_frames": 8,
+      "decoded_video_frames": 18,
+      "first_part_seconds": 2.07,
+      "real_HA_HLS_worker": true,
+      "stalled_source": false,
+      "synthetic_media": true,
+      "unload_closed_worker": true,
+      "unload_seconds": 0.017
+    },
+    {
+      "actual_HACS_download": false,
+      "audio_enabled": false,
+      "browser_playback": false,
+      "cloud_or_camera_contacted": false,
+      "codecs": [
+        "hevc"
+      ],
+      "decoded_audio_frames": 0,
+      "decoded_video_frames": 18,
+      "first_part_seconds": 1.21,
+      "real_HA_HLS_worker": true,
+      "stalled_source": true,
+      "synthetic_media": true,
+      "unload_closed_worker": true,
+      "unload_seconds": 0.007
+    }
+  ],
+  "stable_host_findings_resolved": false,
+  "stable_requirements_modified": false,
+  "runtime_source_modified": false,
+  "publication_authorized": false
+}

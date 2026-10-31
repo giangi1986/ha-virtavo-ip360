@@ -1,0 +1,174 @@
+{
+  "checked_on": "2026-10-31",
+  "user_selected_channel": "stable",
+  "latest_stable_checked": "2026.10.4",
+  "minimum_declared": "2026.10.0",
+  "minimum_targeted_HA_tests_passed": 26,
+  "minimum_compatible_distributions": 106,
+  "latest_scope_test": {
+    "passed": true,
+    "result": {
+      "Pillow_image_API_calls": 0,
+      "actual_HACS_download": false,
+      "audio_enabled": true,
+      "browser_playback": false,
+      "cloud_or_camera_contacted": false,
+      "codecs": [
+        "hevc",
+        "aac"
+      ],
+      "decoded_audio_frames": 8,
+      "decoded_video_frames": 18,
+      "first_part_seconds": 2.02,
+      "host_vulnerabilities_fixed": false,
+      "real_HA_HLS_worker": true,
+      "scope": "actual_HA_HLS_audio_and_unsupported_stills_only",
+      "stalled_source": false,
+      "synthetic_media": true,
+      "unauthenticated_image_access_rejected": true,
+      "unload_closed_worker": true,
+      "unload_seconds": 0.008,
+      "unsupported_image_requests": 2,
+      "unsupported_images_woke_camera": false
+    }
+  },
+  "minimum_scope_test": {
+    "passed": true,
+    "result": {
+      "Pillow_image_API_calls": 0,
+      "actual_HACS_download": false,
+      "audio_enabled": true,
+      "browser_playback": false,
+      "cloud_or_camera_contacted": false,
+      "codecs": [
+        "hevc",
+        "aac"
+      ],
+      "decoded_audio_frames": 8,
+      "decoded_video_frames": 18,
+      "first_part_seconds": 2.02,
+      "host_vulnerabilities_fixed": false,
+      "real_HA_HLS_worker": true,
+      "scope": "actual_HA_HLS_audio_and_unsupported_stills_only",
+      "stalled_source": false,
+      "synthetic_media": true,
+      "unauthenticated_image_access_rejected": true,
+      "unload_closed_worker": true,
+      "unload_seconds": 0.017,
+      "unsupported_image_requests": 2,
+      "unsupported_images_woke_camera": false
+    }
+  },
+  "direct_Pillow_imports": 0,
+  "extra_Virtavo_pip_requirements": [],
+  "host_vulnerability_status": "39 Pillow advisory records in HA-pinned Pillow12.3.0; not fixed or ignored",
+  "bounded_scope": "Virtavo actual HLS with synthetic HEVC/AAC; normal/scaled unsupported image proxy and unauthenticated request",
+  "global_HA_unreachability_claim": false,
+  "runtime_modified": false,
+  "camera_contacted": false,
+  "public_publication_authorized": false,
+  "guarded_Pillow_module_functions": [
+    "open",
+    "new",
+    "frombytes",
+    "frombuffer",
+    "fromarray",
+    "merge"
+  ],
+  "guarded_Pillow_Image_methods": [
+    "save",
+    "convert",
+    "filter",
+    "transform",
+    "quantize",
+    "getexif"
+  ],
+  "unexecuted_host_paths_remain_out_of_scope": true,
+  "full_extracted_stable_suite": {
+    "tests": 187,
+    "failures": 0,
+    "skips": 0,
+    "isolated_interpreter": true,
+    "source_only": true,
+    "log_private": "final_extracted187.log"
+  },
+  "component_runtime_modified": false,
+  "upstream_advisories_ignored": false,
+  "minimum_HA_results": [
+    {
+      "HA_decoder_tested": false,
+      "account_contexts_closed": 1,
+      "actual_HACS_download": false,
+      "cloud_or_camera_contacted": false,
+      "default_on_demand": true,
+      "full_HA_config_entry_setup_unload": true,
+      "real_HA_camera_entity_registered": true,
+      "real_loader_and_platform_forward": true
+    },
+    {
+      "account_connections_closed": 3,
+      "actual_HACS_download_tested": false,
+      "audio_default_off_and_opt_in": true,
+      "camera_or_cloud_contacted": false,
+      "default_on_demand": true,
+      "isolated_runtime_copy": true,
+      "real_HA_flow_service_factory_camera_endpoint": true,
+      "source_uses_only_staged_component": true,
+      "video_decoded": false
+    },
+    {
+      "actual_HACS_download": false,
+      "audio_enabled": false,
+      "browser_playback": false,
+      "cloud_or_camera_contacted": false,
+      "codecs": [
+        "hevc"
+      ],
+      "decoded_audio_frames": 0,
+      "decoded_video_frames": 18,
+      "first_part_seconds": 1.21,
+      "real_HA_HLS_worker": true,
+      "stalled_source": false,
+      "synthetic_media": true,
+      "unload_closed_worker": true,
+      "unload_seconds": 0.008
+    },
+    {
+      "actual_HACS_download": false,
+      "audio_enabled": true,
+      "browser_playback": false,
+      "cloud_or_camera_contacted": false,
+      "codecs": [
+        "hevc",
+        "aac"
+      ],
+      "decoded_audio_frames": 8,
+      "decoded_video_frames": 18,
+      "first_part_seconds": 2.02,
+      "real_HA_HLS_worker": true,
+      "stalled_source": false,
+      "synthetic_media": true,
+      "unload_closed_worker": true,
+      "unload_seconds": 0.008
+    },
+    {
+      "actual_HACS_download": false,
+      "audio_enabled": false,
+      "browser_playback": false,
+      "cloud_or_camera_contacted": false,
+      "codecs": [
+        "hevc"
+      ],
+      "decoded_audio_frames": 0,
+      "decoded_video_frames": 18,
+      "first_part_seconds": 1.21,
+      "real_HA_HLS_worker": true,
+      "stalled_source": true,
+      "synthetic_media": true,
+      "unload_closed_worker": true,
+      "unload_seconds": 0.006
+    }
+  ],
+  "selected_host_policy": "current supported stable; minimum is compatibility-only",
+  "HA_upstream_supported_versions_source": "https://www.home-assistant.io/security/"
+}

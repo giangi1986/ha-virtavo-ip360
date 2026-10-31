@@ -1,0 +1,31 @@
+{
+  "tool": "pip-audit2.10.1",
+  "scope": "Fresh private CI environment recreated from requirements-test.txt; exact resolved inventory pending artifact retrieval",
+  "status": "upstream_host_findings_retained_project_paths_assessed",
+  "services_attempted": [
+    "PyPI",
+    "OSV"
+  ],
+  "reason": "39 Pillow records retained; no forced host dependency update. Actual stable Virtavo HLS and image proxy scope check passes without guarded Pillow API calls; no whole-host safety claim.",
+  "vulnerability_findings": 39,
+  "automatic_fixes_requested": false,
+  "private_CI_workflow_prepared": true,
+  "private_CI_executed": true,
+  "GitHub_connection_available": true,
+  "affected_packages": 1,
+  "private_CI_run_url": "https://github.com/giangi1986/ha-virtavo-ip360/actions/runs/41229140935",
+  "remote_commit": "3ad37b926aea685ca40114c914c09681eab7b606",
+  "artifact_id": 13053008056,
+  "artifact_sha256": "8de972f9c675f5c6c003b7e84996901188b09600409fe22dcb258686a351b0ea",
+  "artifact_retrieved": true,
+  "affected_package": "pillow",
+  "affected_version": "12.3.0",
+  "fixed_version": "13.0.0",
+  "triage": "evidence/DEPENDENCY_TRIAGE.json",
+  "preview_result": "evidence/PREVIEW_COMPATIBILITY.json",
+  "preview_known_vulnerability_records": 0,
+  "stable_host_findings_resolved": false,
+  "stable_selected": true,
+  "preview_required": false,
+  "scope_report": "evidence/STABLE_SECURITY_SCOPE.json"
+}

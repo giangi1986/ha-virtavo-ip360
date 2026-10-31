@@ -1,1 +1,11 @@
-{}
+{
+  "checked_on": "2026-10-31",
+  "official_faq": "https://hacs.dev/docs/faq/private_repositories/",
+  "official_requirements": "https://hacs.dev/docs/publish/start/",
+  "standard_HACS_supports_private_repositories": false,
+  "private_remote_authorized_if_needed": true,
+  "public_visibility_authorized": false,
+  "public_releases_authorized": false,
+  "private_remote_created_for_test": true,
+  "local_archive_install_is_HACS_download": false
+}

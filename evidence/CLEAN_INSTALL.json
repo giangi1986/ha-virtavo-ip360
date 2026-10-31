@@ -1,0 +1,21 @@
+{
+  "fresh_venv": true,
+  "declared_dependencies_only": true,
+  "isolated_interpreter": true,
+  "extracted_source_only": true,
+  "tests": 186,
+  "exit_code": 0,
+  "actual_HACS_download": false,
+  "public_repository_created": false,
+  "private_remote_created": false,
+  "real_camera_repeated": false,
+  "known_vulnerability_audit": "not_completed_due_to_PyPI_and_OSV_timeouts",
+  "python": "3.14.8",
+  "homeassistant": "2026.10.4",
+  "system_site_packages": false,
+  "installed_distributions": 106,
+  "dependency_consistency": "passed",
+  "unicorn_installed": false,
+  "manual_installer_tests": 6,
+  "private_workflow_policy_tests": 2
+}

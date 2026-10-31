@@ -1,0 +1,61 @@
+{
+  "HACS_version": "2.0.5",
+  "HACS_commit": "c0dfd8b44297c3673c21973e2539375a53687a9c",
+  "official_repository_engine_unmodified": true,
+  "official_HACS_metadata_validation": true,
+  "official_HACS_manifest_schemas": true,
+  "official_HACS_archive_selection_extraction": true,
+  "selected_runtime_files": 35,
+  "all_runtime_bytes_match": true,
+  "branch_fallback_fixture_requests": 2,
+  "actual_HA_loader_after_HACS_extraction": {
+    "full_HA_config_entry_setup_unload": true,
+    "real_loader_and_platform_forward": true,
+    "real_HA_camera_entity_registered": true,
+    "default_on_demand": true,
+    "actual_HACS_download": false,
+    "HA_decoder_tested": false,
+    "cloud_or_camera_contacted": false,
+    "account_contexts_closed": 1
+  },
+  "GitHub_metadata_and_network": "local fixtures only",
+  "HACS_UI_or_startup_tested": false,
+  "actual_remote_HACS_download": false,
+  "private_repositories_supported": false,
+  "camera_or_cloud_contacted": false,
+  "runtime_dependencies_added": false,
+  "source": "https://github.com/hacs/integration/tree/2.0.5",
+  "source_module_sha256": {
+    "custom_components/hacs/repositories/base.py": "17aeee13aa48153f17c0de654ce6d4cd03495f21be3c57a218bf1909fefc4d2e",
+    "custom_components/hacs/repositories/integration.py": "bc89ae3a9507a52a6d19fee66441b1711b535690c89fbfdf6d21850bee86e1e8"
+  },
+  "checked_on": "2026-10-31",
+  "host_HA_version": "2026.10.4",
+  "minimum_HA_2026_10_0_result": {
+    "HACS_version": "2.0.5",
+    "HACS_commit": "c0dfd8b44297c3673c21973e2539375a53687a9c",
+    "official_repository_engine_unmodified": true,
+    "official_HACS_metadata_validation": true,
+    "official_HACS_manifest_schemas": true,
+    "official_HACS_archive_selection_extraction": true,
+    "selected_runtime_files": 35,
+    "all_runtime_bytes_match": true,
+    "branch_fallback_fixture_requests": 2,
+    "actual_HA_loader_after_HACS_extraction": {
+      "full_HA_config_entry_setup_unload": true,
+      "real_loader_and_platform_forward": true,
+      "real_HA_camera_entity_registered": true,
+      "default_on_demand": true,
+      "actual_HACS_download": false,
+      "HA_decoder_tested": false,
+      "cloud_or_camera_contacted": false,
+      "account_contexts_closed": 1
+    },
+    "GitHub_metadata_and_network": "local fixtures only",
+    "HACS_UI_or_startup_tested": false,
+    "actual_remote_HACS_download": false,
+    "private_repositories_supported": false,
+    "camera_or_cloud_contacted": false,
+    "runtime_dependencies_added": false
+  }
+}

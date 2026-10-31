@@ -1,0 +1,61 @@
+{
+  "requirement": "real HA HLS processing of production mux output and stalled-source unload",
+  "results": [
+    {
+      "actual_HACS_download": false,
+      "audio_enabled": false,
+      "browser_playback": false,
+      "cloud_or_camera_contacted": false,
+      "codecs": [
+        "hevc"
+      ],
+      "decoded_audio_frames": 0,
+      "decoded_video_frames": 18,
+      "first_part_seconds": 1.21,
+      "real_HA_HLS_worker": true,
+      "stalled_source": false,
+      "synthetic_media": true,
+      "unload_closed_worker": true,
+      "unload_seconds": 0.007
+    },
+    {
+      "actual_HACS_download": false,
+      "audio_enabled": true,
+      "browser_playback": false,
+      "cloud_or_camera_contacted": false,
+      "codecs": [
+        "hevc",
+        "aac"
+      ],
+      "decoded_audio_frames": 8,
+      "decoded_video_frames": 18,
+      "first_part_seconds": 2.02,
+      "real_HA_HLS_worker": true,
+      "stalled_source": false,
+      "synthetic_media": true,
+      "unload_closed_worker": true,
+      "unload_seconds": 0.017
+    },
+    {
+      "actual_HACS_download": false,
+      "audio_enabled": false,
+      "browser_playback": false,
+      "cloud_or_camera_contacted": false,
+      "codecs": [
+        "hevc"
+      ],
+      "decoded_audio_frames": 0,
+      "decoded_video_frames": 18,
+      "first_part_seconds": 1.22,
+      "real_HA_HLS_worker": true,
+      "stalled_source": true,
+      "synthetic_media": true,
+      "unload_closed_worker": true,
+      "unload_seconds": 0.007
+    }
+  ],
+  "regression_before_fix": "source stall made reader join exceed3-second test deadline; closing owned endpoint unblocked it",
+  "fix": "close owned HTTP endpoint before joining HA stream reader; cleanup finalizers retained",
+  "no_real_camera_test_repeated": true,
+  "no_browser_or_remote_HACS_claim": true
+}
