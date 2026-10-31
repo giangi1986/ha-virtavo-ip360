@@ -6,12 +6,40 @@ import json
 from pathlib import Path
 import re
 import sys
+import struct
+import zlib
 
 ROOT=Path(__file__).resolve().parents[1]
 FORBIDDEN={'.pcap','.pcapng','.apk','.xapk','.dex','.so','.pyc','.mp4','.hevc','.h265','.aac','.zip','.pem','.key'}
 TOKEN=re.compile(r'(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[A-Z0-9]{16}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|Bearer\s+[A-Za-z0-9_.-]{24,})')
 EMAIL=re.compile(r'[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+\.[A-Za-z]{2,})')
 HOST_CONTEXT=re.compile(r'(?i)(?:/sdcard/|/workspace/|/root/|/home/(?!example\b)[A-Za-z0-9_-]+)')
+
+
+
+BRAND_ICON = 'custom_components/virtavo/brand/icon.png'
+
+def valid_brand_png(data):
+    """Bounded RGBA icon with no ancillary chunks or embedded metadata."""
+    if len(data) > 131072 or not data.startswith(b'\x89PNG\r\n\x1a\n'):
+        return False
+    chunks=[]; offset=8
+    while offset < len(data):
+        if offset+12 > len(data): return False
+        size=struct.unpack('>I',data[offset:offset+4])[0]
+        end=offset+12+size
+        if end > len(data): return False
+        kind=data[offset+4:offset+8]; payload=data[offset+8:end-4]
+        if zlib.crc32(kind+payload) != struct.unpack('>I',data[end-4:end])[0]: return False
+        chunks.append((kind,payload)); offset=end
+    if [kind for kind,_ in chunks] != [b'IHDR',b'IDAT',b'IEND']: return False
+    if chunks[0][1] != struct.pack('>IIBBBBB',256,256,8,6,0,0,0) or chunks[-1][1]: return False
+    expected=256*(1+256*4)
+    try:
+        decoder=zlib.decompressobj(); pixels=decoder.decompress(chunks[1][1],expected+1)
+    except zlib.error:
+        return False
+    return len(pixels)==expected and decoder.eof and not decoder.unconsumed_tail and not decoder.unused_data and all(pixels[y*(1+256*4)]<=4 for y in range(256))
 
 
 def audit(root=ROOT):
@@ -23,6 +51,9 @@ def audit(root=ROOT):
         if not path.is_file():continue
         files.append(rel)
         if path.suffix.lower() in FORBIDDEN or path.name=='.env' or path.name.startswith('.env.'):findings.append({'path':rel,'kind':'forbidden_asset'})
+        if rel==BRAND_ICON:
+            if not valid_brand_png(path.read_bytes()): findings.append({'path':rel,'kind':'invalid_brand_icon'})
+            continue
         try:text=path.read_text()
         except UnicodeError:findings.append({'path':rel,'kind':'non_text_asset'});continue
         # Scanner patterns are definitions, not disclosed user data.

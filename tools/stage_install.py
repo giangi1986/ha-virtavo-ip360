@@ -12,6 +12,7 @@ import shutil
 import stat
 import tempfile
 import zipfile
+from audit_repository import BRAND_ICON, valid_brand_png
 
 PREFIX='custom_components/virtavo/'
 
@@ -37,11 +38,12 @@ def stage_install(archive_path,parent):
         total=0
         for entry in entries:
             if not entry.filename.startswith(PREFIX) or entry.is_dir():continue
-            if entry.file_size>2*1024*1024 or Path(entry.filename).suffix not in ('.py','.json'):
+            if entry.file_size>2*1024*1024 or (Path(entry.filename).suffix not in ('.py','.json') and entry.filename not in (BRAND_ICON,PREFIX+'brand/README.md')):
                 raise ValueError('Unexpected or oversized runtime asset')
             total+=entry.file_size
             if total>10*1024*1024:raise ValueError('Runtime package exceeds size limit')
             data=archive.read(entry)
+            if entry.filename==BRAND_ICON and not valid_brand_png(data):raise ValueError('Invalid brand icon')
             if hashes.get(entry.filename)!=hashlib.sha256(data).hexdigest():raise ValueError('Runtime archive hash mismatch')
             payload.append((entry.filename,data))
         files=dict(payload)
