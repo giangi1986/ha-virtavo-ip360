@@ -46,4 +46,4 @@ The official HACS2.0.5 repository engine also validates and extracts the35 runti
 
 Stable HA remains the default. Earlier preview compatibility evidence is retained separately and does not impose a prerelease requirement.
 
-The private remote currently contains only a minimal CI harness; the complete prepared integration is in the source ZIP and Git bundle. No public repository visibility or release is authorized.
+The private source mirror is being completed from the verified source archive. Clean GitHub runner checks and whole-tree byte verification remain pending; local source ZIP and Git bundle are the authoritative backups. No public repository visibility or release is authorized.

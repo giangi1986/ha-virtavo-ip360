@@ -1,4 +1,4 @@
-# Project checkpoint50 —2026-10-31
+# Project checkpoint52 —2026-10-31
 
 Reference0.1.0-beta.2; giangi1986/ha-virtavo-ip360; MIT/CODEOWNERS configured. Public visibility and public releases NOT authorized. Checklist5/7=71%, not effort/time.
 
@@ -10,6 +10,6 @@ New actual-HA acceptance scope passes on both2026.10.0 and2026.10.4: real HEVC/A
 
 Runtime unchanged, historical DES/auth/fresh live121HEVC55AAC proofs preserved. Only synthetic checks justified by the declared minimum and security-path requirement run; no camera/cloud/production access. CI prepared with current stable full suite and minimum27 HA/scope checks. Earlier preview evidence retained as historical only.
 
-Full source/Git backups persist; private remote remains minimal CI harness. Native connection last returned404 despite valid browser login. Full private source mirroring, actual HACS download and final publication review remain pending; standard HACS private repos unsupported, public availability still prohibited. No new remote changes in this checkpoint.
+Full source/Git backups persist. Official HACS2.0.5 repository-engine/schema acceptance passes on both2026.10.0 and2026.10.4 using unmodified pinned modules, local GitHub/archive fixtures and35 runtime files extracted byte-for-byte then loaded by real HA. HACS frontend/startup and actual remote download are not tested.
 
-Official HACS2.0.5 repository-engine/schema acceptance also passes on both2026.10.0 and2026.10.4: unmodified pinned modules, local GitHub/archive fixtures,35 runtime files extracted byte-for-byte and then loaded/registered/consumed/unloaded by real HA. No frontend/startup/real remote download tested; gate remains open. Reproduction and exact limits in docs/HACS_OFFLINE_TEST.md.
+Checkpoint52: private source mirror final reconciliation in progress. Runtime, root metadata/MIT, CODEOWNERS, documentation, evidence, tests and tools have been submitted through the existing private browser session, preserving remote history. Final workflows/metadata and complete-tree digest verification remain pending. A read-only private integrity workflow and source hash inventory are prepared. Three workflow policy tests pass locally; the extra policy test brings the planned full CI suite to188, not yet claimed as passed. Previously verified187 stable and27 minimum results remain valid for their documented revisions. Runtime unchanged; no camera or production access. Public visibility/releases remain prohibited. Actual HACS download and final publication review remain open.
