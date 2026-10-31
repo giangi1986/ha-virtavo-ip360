@@ -1,6 +1,6 @@
 # Virtavo / IPC360 Home for Home Assistant
 
-Local beta candidate **0.1.0-beta.2**, licensed under MIT. Prepared for HACS custom-repository installation; not yet published. Destination metadata is configured for giangi1986/ha-virtavo-ip360. An actual HACS repository download still requires a remotely available repository and has not been performed.
+Local beta candidate **0.1.0-beta.2**, licensed under MIT. Prepared for HACS custom-repository installation; not yet published. Destination metadata is configured for giangi1986/ha-virtavo-ip360. Actual registration, GitHub archive download and installation through unmodified HACS2.0.5 methods now pass in an empty HA configuration, followed by real HA setup/unload. HACS browser UI/OAuth startup is not covered; see evidence/HACS_REMOTE_INSTALL.json.
 
 Email/password authentication, fresh device discovery (owned and shared devices), autonomous manager/relay transport, pure Python DES, H.265 video and optional AAC audio. On-demand streaming and audio OFF are the defaults. Continuous streaming is optional and may increase battery consumption.
 
@@ -16,7 +16,7 @@ The config flow validates credentials, discovers devices and requires selecting 
 
 A separate fresh-session live test decoded121 HEVC frames and55 AAC frames in10 seconds from a shared device, without recording. The full Home Assistant loader, camera registration, on-demand HTTP producer and unload were tested in an isolated runtime-only configuration. External account/receiver I/O was substituted in HA tests; the receiver's real operation was checked separately.
 
-See [verification and limits](docs/VERIFICATION.md). The real HA HLS worker also processes synthetic HEVC/AAC output from the production mux; stalled-source unload is regression-tested. Physical browser playback and actual HACS download are not certified by these offline tests. H.264, Google login, snapshots, motion, talkback and playback archives are outside the first beta. UDP loss recovery/reordering and precise A/V sync are not implemented; CN carrier routing is unsupported. Audio OFF discards audio before processing and does not guarantee the device stops sending it.
+See [verification and limits](docs/VERIFICATION.md). The real HA HLS worker also processes synthetic HEVC/AAC output from the production mux; stalled-source unload is regression-tested. Physical browser playback remains unverified; the actual HACS download is verified separately from these offline tests. H.264, Google login, snapshots, motion, talkback and playback archives are outside the first beta. UDP loss recovery/reordering and precise A/V sync are not implemented; CN carrier routing is unsupported. Audio OFF discards audio before processing and does not guarantee the device stops sending it.
 
 ## Development
 
@@ -36,7 +36,7 @@ The destination is `giangi1986/ha-virtavo-ip360`, with manifest URLs and CODEOWN
 
 The CI workflows validate and test only. No workflow creates a repository, pushes changes or publishes releases. Publication remains subject to the owner's explicit authorization. [MIT license](LICENSE), [provenance](docs/PROVENANCE.md), [security](SECURITY.md), [checkpoint](VIRTAVO_STATO_PROGETTO.md).
 
-## Private-only test status
+## Controlled HACS test status
 
 The owner authorized public repository visibility solely for a real HACS installation test, after security/history and backup checks. No release or community announcement is authorized. Standard HACS does not support private repositories; see [private testing](docs/PRIVATE_TESTING.md) and the linked official FAQ. The local ZIP installer and full HA tests can run without publishing. The complete extracted candidate passed187 tests on stable HA2026.10.4. The complete private GitHub checkout subsequently passed188 tests (including the added workflow permission test), zero failures. The minimum2026.10.0 environment has27 targeted HA/security-scope checks passing. Both use only declared dependencies. No existing configuration was overwritten.
 
