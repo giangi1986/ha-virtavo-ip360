@@ -5,6 +5,17 @@ import yaml
 ROOT=Path(__file__).resolve().parents[1]
 
 class PrivateWorkflowPolicyTests(unittest.TestCase):
+ def test_source_integrity_workflow_is_private_read_only_and_does_not_publish(self):
+  text=(ROOT/'.github/workflows/private-source-integrity.yml').read_text()
+  data=yaml.safe_load(text)
+  self.assertEqual(data['permissions'],{'contents':'read'})
+  guard=data['jobs']['verify']['if']
+  self.assertIn("github.repository == 'giangi1986/ha-virtavo-ip360'",guard)
+  self.assertIn('github.event.repository.private == true',guard)
+  checkout=data['jobs']['verify']['steps'][0]
+  self.assertIs(checkout['with']['persist-credentials'],False)
+  self.assertNotIn('git push',text);self.assertNotIn('contents: write',text)
+  self.assertNotIn('gh release',text)
  def test_security_audit_only_runs_for_exact_private_repository(self):
   path=ROOT/'.github/workflows/private-security.yml'
   text=path.read_text();data=yaml.safe_load(text)
