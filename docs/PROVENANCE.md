@@ -7,3 +7,5 @@ Protocol formats were checked against the supplied IPC360 Home8.10.1.0 applicati
 Home Assistant, FFmpeg, PyAV and test dependencies are separately installed software with their own licenses. They are not vendored or relicensed by this repository. No affiliation with or endorsement by the camera vendor is claimed.
 
 Private development archives and detailed operational history are not part of this repository. Live verification is summarized using counts only. Historical research tests remain in the private project archive; current runtime tests are distributed here and run independently of that archive.
+
+The local brand/icon.png is original geometric project artwork, generated reproducibly by .github/generate_brand_icon.py using Python standard library only. It uses no vendor logo, proprietary artwork or third-party fonts and is included under the project MIT license. Its image structure and size are bounded by the packaging/privacy tools; other binary files remain rejected.

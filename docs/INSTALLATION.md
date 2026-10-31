@@ -13,7 +13,7 @@ See [private testing](PRIVATE_TESTING.md). HACS standard does not support privat
 ## After separately authorized public availability
 
 1. In HACS, add `https://github.com/giangi1986/ha-virtavo-ip360` as a custom repository, category Integration. This is the intended destination; availability is not asserted before authorized publication.
-2. Select the beta release, download it and restart the test Home Assistant instance.
+2. Download the main branch (no GitHub release has been created), then restart the test Home Assistant instance.
 3. Add Virtavo Camera, choose the correct account region/country, log in and select a camera. For Italy, countryIT and server regionfr correspond to the audited app policy.
 4. Open the camera stream. On-demand starts the producer only when consumed. Enable audio in options if desired; continuous streaming is opt-in.
 5. Verify close/reopen, reload, reauthentication and removal. Preserve any existing production instance while evaluating the beta.
@@ -29,4 +29,4 @@ References checked2026-10-31: https://hacs.dev/docs/publish/integration/ and htt
 
 Virtavo has no additional pip requirements and needs no SDK, Unicorn, PCAP, Karbon, separate bridge or RTSP server. HA's built-in stream/ffmpeg components and the FFmpeg executable supplied by the HA installation remain necessary; IPC360 Home cloud/Internet access is necessary. Developer requirements-test files are for disposable test environments, not instructions to reinstall dependencies inside a working HA instance.
 
-The selected stable host pins a Pillow version with known upstream findings. See DEPENDENCY_SECURITY.md for the retained findings and bounded Virtavo-path test; do not override HA dependencies manually. This candidate has not yet passed an actual HACS remote download and is not publicly published.
+The selected stable host pins a Pillow version with known upstream findings. See DEPENDENCY_SECURITY.md for the retained findings and bounded Virtavo-path test; do not override HA dependencies manually. A real HACS network registration/download/install test now passes on the public test repository; no release or community announcement has been created. HACS UI/OAuth startup and physical client playback remain separate unverified paths.
