@@ -1,0 +1,40 @@
+{
+  "version": "0.1.0-beta.2",
+  "publication_authorized": false,
+  "gates": [
+    {
+      "id": "email_password",
+      "status": "verified"
+    },
+    {
+      "id": "autonomous_session_discovery",
+      "status": "verified"
+    },
+    {
+      "id": "pure_python_des_hevc",
+      "status": "verified"
+    },
+    {
+      "id": "on_demand_audio",
+      "status": "verified"
+    },
+    {
+      "id": "home_assistant",
+      "status": "verified"
+    },
+    {
+      "id": "clean_hacs_install",
+      "status": "blocked",
+      "reason": "Official standard HACS excludes private repositories. Public availability is not authorized. Manual archive installation is tested separately and is not this gate."
+    },
+    {
+      "id": "publication_review",
+      "status": "blocked",
+      "reason": "Public visibility and releases not authorized. Stable HA selected;39 upstream HA-pinned Pillow advisories retained with bounded Virtavo path assessment for final release review. Private remote currently holds only the audit harness."
+    }
+  ],
+  "progress_basis": "verified gates divided by7; not elapsed time or effort",
+  "verified_gates": 5,
+  "total_gates": 7,
+  "progress_percent": 71
+}
