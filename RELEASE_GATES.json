@@ -30,7 +30,7 @@
     {
       "id": "publication_review",
       "status": "blocked",
-      "reason": "Public visibility and releases not authorized. Stable HA selected;39 upstream HA-pinned Pillow advisories retained with bounded Virtavo path assessment for final release review. Private remote currently holds only the audit harness."
+      "reason": "Public visibility and public releases explicitly not authorized. Complete private source mirror and clean runner CI are verified; final publication review remains separate."
     }
   ],
   "progress_basis": "verified gates divided by7; not elapsed time or effort",
