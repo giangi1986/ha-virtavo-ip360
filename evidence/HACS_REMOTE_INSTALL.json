@@ -6,10 +6,10 @@
   "real_GitHub_metadata_API": true,
   "actual_HACS_download": true,
   "real_HACS_registration_and_install": true,
-  "installed_commit": "07bf65e",
+  "installed_commit": "ebd2af1",
   "selected_ref": "main",
   "release_required": false,
-  "runtime_files_installed": 35,
+  "runtime_files_installed": 37,
   "all_runtime_bytes_match": true,
   "actual_HA_loader_after_HACS_install": {
     "full_HA_config_entry_setup_unload": true,
@@ -28,6 +28,8 @@
   "runtime_modified": false,
   "runtime_SHA256": {
     "__init__.py": "c25a623e5fa95182734b7edfe5bab030ba8bacad9bb2f191568c9e080804bca6",
+    "brand/README.md": "a0c65c778002e15353ff82a8dfc689a763c1c5bf8d2a8ddf07efe4756447c0fd",
+    "brand/icon.png": "1ab9948efe36d13acedcbf891d0d4a7b657c2f49f0956ca945d7ac00da9f0d6f",
     "camera.py": "b8da7065a49d40aaf833e074c994e66178a19f8295848952f429f9ec84a829fd",
     "config_flow.py": "97ea8cb461eebb01460c09d9872acdac5a6f068bf844110f70737c2be56b897c",
     "const.py": "9ccf63c93a1b7dc31ce5de73dd7534d0015f9c799db3524a73ea3dda31b27722",
@@ -63,7 +65,8 @@
     "strings.json": "2887ab0cef3b04e701bb759a0190110d22dccad405a8f2788c91d151ef32ffe9",
     "translations/it.json": "0aadca72f7c54b3a50cb4b0a78f4234ea30599a22f22157bee61965532c0d684"
   },
-  "run": "https://github.com/giangi1986/ha-virtavo-ip360/actions/runs/41251380684",
-  "job": "https://github.com/giangi1986/ha-virtavo-ip360/actions/runs/41251380684/job/124685438395"
+  "run": "https://github.com/giangi1986/ha-virtavo-ip360/actions/runs/41252298666",
+  "job": "https://github.com/giangi1986/ha-virtavo-ip360/actions/runs/41252298666/job/124688134729",
+  "tested_remote_commit": "ebd2af183b518d6fdba45b05ddfac900e28a31bd",
+  "runtime_python_sources_unchanged_from_checkpoint53": true
 }
-
