@@ -25,12 +25,12 @@
     {
       "id": "clean_hacs_install",
       "status": "verified",
-      "evidence": "evidence/HACS_REMOTE_INSTALL.json: actual official HACS registration, GitHub download and HA load passed on reference35 runtime files; branding-only candidate retest pending."
+      "evidence": "evidence/HACS_REMOTE_INSTALL.json: official HACS registration, real GitHub archive download,37 matching installed files and actual HA setup/unload pass."
     },
     {
       "id": "publication_review",
       "status": "blocked",
-      "reason": "No release or community announcement authorized. Official HACS description/topics/brand validation corrections and final candidate review in progress; upstream host findings remain documented."
+      "reason": "Technical review completed for authorized public HACS test. Wider release/announcement remains unauthorized; upstream host findings retained."
     }
   ],
   "progress_basis": "verified gates divided by7; not elapsed time or effort",
