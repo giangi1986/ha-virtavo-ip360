@@ -28,4 +28,4 @@ The earlier separate official HA2026.11.0b1/Pillow13 environment passed26 target
 
 ## Publication boundary
 
-Stable compatibility work proceeds without requiring users to select prerelease HA. The upstream finding remains documented for final release review, rather than being relabeled a Virtavo code fix. No public publication is authorized. Actual HACS download and full private source mirroring remain separate pending operations.
+Stable compatibility work proceeds without requiring users to select prerelease HA. The upstream finding remains documented for final release review, rather than being relabeled a Virtavo code fix. Public visibility was subsequently authorized solely for HACS testing. Real HACS installation, official validation and source mirroring are now verified separately; no release or announcement is authorized. Final190 stable and27 minimum results are in evidence/FINAL_ACCEPTANCE.json. These later checks do not remove the host Pillow findings.

@@ -1,6 +1,6 @@
 # Installation
 
-## Current preparation
+## Controlled public test candidate
 
 The source tree has the HACS integration layout and contains one integration, `custom_components/virtavo`. The destination is configured as `giangi1986/ha-virtavo-ip360`. Run `python tools/validate_repository.py --publication` to check local metadata. Configuration does not create or publish the GitHub repository.
 
@@ -10,9 +10,9 @@ For isolated developer testing, copy only `custom_components/virtavo` into an em
 
 See [private testing](PRIVATE_TESTING.md). HACS standard does not support private repositories. The private ZIP installer creates a fresh isolated configuration without changing a working HA installation; it is not a HACS download test.
 
-## After separately authorized public availability
+## HACS installation in a test instance
 
-1. In HACS, add `https://github.com/giangi1986/ha-virtavo-ip360` as a custom repository, category Integration. This is the intended destination; availability is not asserted before authorized publication.
+1. In HACS, add `https://github.com/giangi1986/ha-virtavo-ip360` as a custom repository, category Integration. The repository is public solely for the authorized installation test.
 2. Download the main branch (no GitHub release has been created), then restart the test Home Assistant instance.
 3. Add Virtavo Camera, choose the correct account region/country, log in and select a camera. For Italy, countryIT and server regionfr correspond to the audited app policy.
 4. Open the camera stream. On-demand starts the producer only when consumed. Enable audio in options if desired; continuous streaming is opt-in.

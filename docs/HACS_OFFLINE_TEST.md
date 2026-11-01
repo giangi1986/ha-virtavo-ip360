@@ -14,4 +14,4 @@ python -I tools/check_hacs_offline.py --hacs-source OFFICIAL_HACS_CLONE --archiv
 
 The tool checks the exact HACS commit/clean tracked sources and archive path/hash/size consistency. It writes only temporary test data plus the explicitly requested report. These checks do not authenticate an untrusted archive publisher.
 
-This is NOT actual HACS GitHub discovery, authentication, registration UI or remote download. It does not establish private-repository support. Standard HACS still requires public repository information, and public availability remains prohibited by the owner. The real remote-install gate therefore stays open.
+This fixture check is NOT actual HACS GitHub discovery, OAuth startup, registration UI or remote download and does not establish private-repository support. It remains historical offline evidence. After separate scoped authorization, real public GitHub registration/download/installation passed using unmodified HACS methods and real network traffic; see ../evidence/HACS_REMOTE_INSTALL.json. That separate test satisfies the remote-install gate, not these fixtures.
